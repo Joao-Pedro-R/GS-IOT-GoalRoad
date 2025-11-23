@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Chat Ollama</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        #chat {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            height: 70vh;
+            overflow-y: auto;
+            box-shadow: 0 0 10px #ccc;
+        }
+        .msg {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        .user {
+            background: #d2eaff;
+            text-align: right;
+        }
+        .bot {
+            background: #e7e7e7;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Chat com Modelo Local (Ollama)</h2>
+
+<div id="chat"></div>
+
+<input id="mensagem" placeholder="Digite aqui..." style="width: 80%; padding: 10px;">
+<button onclick="enviar()" style="padding: 10px;">Enviar</button>
+
+<script>
+async function enviar() {
+    const texto = document.getElementById("mensagem").value;
+    if (!texto) return;
+
+    adicionarMensagem(texto, "user");
+    document.getElementById("mensagem").value = "";
+
+    const resposta = await fetch("http://localhost:5000/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ mensagem: texto })
+    });
+
+    const json = await resposta.json();
+    adicionarMensagem(json.resposta, "bot");
+}
+
+function adicionarMensagem(texto, tipo) {
+    const chat = document.getElementById("chat");
+    const div = document.createElement("div");
+    div.className = "msg " + tipo;
+    div.textContent = texto;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
