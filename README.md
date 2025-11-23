@@ -53,3 +53,5 @@ O Ollama foi utilizado devido a sua semelhancia com o chat-gpt, que é a IA gene
 - JSON - geração de json para a transmissão de informações do Ollama, python e front-end
   
 - requests - para a transmissão de informação
+
+<img width="1749" height="898" alt="image" src="https://github.com/user-attachments/assets/39704b64-337e-4a2c-94a3-543cf24d4361" />
