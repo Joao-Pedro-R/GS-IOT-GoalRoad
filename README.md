@@ -1,6 +1,6 @@
 # GS-IOT-GoalRoad
 
-## Link do projeto no Youtube:
+## Link do projeto no Youtube: https://youtu.be/cqAdSfbL69M
 
 ## 👨‍💻 Integrantes do Grupo
 | Nome           | RM        |
